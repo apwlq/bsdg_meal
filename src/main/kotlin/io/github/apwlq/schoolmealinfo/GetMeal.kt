@@ -9,7 +9,6 @@ import java.time.ZoneOffset
 
 fun getLunch(): String {
     val neis = NeisApi.Builder().build()
-//    val schoolName = "부산동고"
     val schoolName = System.getenv("SCHOOL_NAME")
     val sch = neis.getSchoolByName(schoolName).first()
     val meal = neis.getMealsByAbsoluteDay(getNowDate(), sch.scCode, sch.schoolCode)
@@ -17,7 +16,6 @@ fun getLunch(): String {
 }
 fun getDinner(): String {
     val neis = NeisApi.Builder().build()
-//    val schoolName = "부산동고"
     val schoolName = System.getenv("SCHOOL_NAME")
     val sch = neis.getSchoolByName(schoolName).first()
     val meal = neis.getMealsByAbsoluteDay(getNowDate(), sch.scCode, sch.schoolCode)

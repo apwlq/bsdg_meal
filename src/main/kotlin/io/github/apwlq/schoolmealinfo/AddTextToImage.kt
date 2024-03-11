@@ -84,14 +84,6 @@ object AddTextToImgByTimeline {
                         + ind * prop["draw-leading"].toString().toInt()
             )
         }
-        dinner.split("\n").forEachIndexed { ind, str ->
-            g.drawString(
-                str,
-                prop["dinner-x"].toString().toInt(),
-                prop["dinner-y"].toString().toInt()
-                        + ind * prop["draw-leading"].toString().toInt()
-            )
-        }
         g.color = hex2Rgb(prop["date-color"].toString())
         date.split("\n").forEachIndexed { ind, str ->
             g.drawString(
