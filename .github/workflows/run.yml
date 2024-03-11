@@ -17,11 +17,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      # - name: Make gradlew executable
+      #   run: chmod +x ./gradlew
 
       - name: Execute Gradle build
-        run: ./gradlew shadowJar
+        run: ./gradlew.bat shadowJar
 
       - name: release
         uses: marvinpinto/action-automatic-releases@latest
