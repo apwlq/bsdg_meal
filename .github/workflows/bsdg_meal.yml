@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 21 * * *'
 env:
-  INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
+  INSTAGRAM_USERNAME: "bsdg_meal"
   INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
   OTP_SECRET: ${{ secrets.OTP_SECRET }}
   SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
