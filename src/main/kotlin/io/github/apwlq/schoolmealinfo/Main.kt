@@ -44,11 +44,11 @@ fun timeline() {
                 genTimelineImage("오늘의 저녁", getDinner(), getDinnerKcal())
             )
         )
-//    albumFiles.add(
-//        TimelineAction.SidecarPhoto.from(
-//             pngToJpg(File("assets/image/timeline_ads.png"), "output/timeline_ads.jpg")
-//        )
-//    )
+    albumFiles.add(
+        TimelineAction.SidecarPhoto.from(
+             File("assets/image/timeline_ads.jpg")
+        )
+    )
 
     client.actions().timeline().uploadAlbum(albumFiles, "${getNowDate("yyyy년 MM월 dd일")} 오늘의 급식")
         .thenAccept {
