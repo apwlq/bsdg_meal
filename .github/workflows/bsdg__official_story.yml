@@ -6,7 +6,7 @@ on:
 env:
   INSTAGRAM_USERNAME: "bsdg__official"
   INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD2 }}
-  OTP_SECRET: ${{ secrets.OTP_SECRET }}
+  OTP_SECRET: ${{ secrets.OTP_SECRET2 }}
   SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
   NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
 jobs:

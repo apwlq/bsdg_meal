@@ -31,4 +31,4 @@ jobs:
       - name: Run jar
         run: |
           ARTIFACT=$(find download -type f -name "**.jar")
-          java -jar $ARTIFACT none
+          java -jar $ARTIFACT timeline

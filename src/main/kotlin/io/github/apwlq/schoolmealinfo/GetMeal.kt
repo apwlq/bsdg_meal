@@ -2,7 +2,6 @@ package io.github.apwlq.schoolmealinfo
 
 import io.github.apwlq.mealapi.NeisApi
 
-val filter = "\\([^)]*\\)|[0-9]|&\\n".toRegex()
 val customFilter = "공산|공산품|다선|하단|하단중|주찬|덕|하|대".toRegex()
 
 fun getBreakfast(): String? {
@@ -10,7 +9,7 @@ fun getBreakfast(): String? {
     val schoolName = System.getenv("SCHOOL_NAME")
     val sch = neis.getSchoolByName(schoolName).first()
     val meal = neis.getMealsByDay(getNowDate(), sch.scCode, sch.schoolCode)
-    return meal.breakfast?.joinToString("\n")?.replace(filter, "")?.replace(customFilter, "")?.replace(Regex("&(\r?\n|$)"), "$1")
+    return filterMeal(meal.breakfast?.joinToString("\n"))
 }
 
 fun getLunch(): String? {
@@ -18,7 +17,7 @@ fun getLunch(): String? {
     val schoolName = System.getenv("SCHOOL_NAME")
     val sch = neis.getSchoolByName(schoolName).first()
     val meal = neis.getMealsByDay(getNowDate(), sch.scCode, sch.schoolCode)
-    return meal.lunch?.joinToString("\n")?.replace(filter, "")?.replace(customFilter, "")?.replace(Regex("&(\r?\n|$)"), "$1")
+    return filterMeal(meal.lunch?.joinToString("\n"))
 }
 
 fun getDinner(): String? {
@@ -26,7 +25,7 @@ fun getDinner(): String? {
     val schoolName = System.getenv("SCHOOL_NAME")
     val sch = neis.getSchoolByName(schoolName).first()
     val meal = neis.getMealsByDay(getNowDate(), sch.scCode, sch.schoolCode)
-    return meal.dinner?.joinToString("\n")?.replace(filter, "")?.replace(customFilter, "")?.replace(Regex("&(\r?\n|$)"), "$1")
+    return filterMeal(meal.dinner?.joinToString("\n"))
 }
 
 
@@ -53,4 +52,8 @@ fun getDinnerKcal(): String? {
     val sch = neis.getSchoolByName(schoolName).first()
     val meal = neis.getMealsByDay(getNowDate(), sch.scCode, sch.schoolCode, true)
     return meal.dinner?.joinToString("\n")
+}
+
+fun filterMeal(meal: String?): String? {
+    return meal?.replace("\\([^)]*\\)|[0-9]|&\\n".toRegex(), "")?.replace(customFilter, "")?.replace(Regex("&(\r?\n|$)"), "$1")?.replace("&.*".toRegex(), "")
 }
